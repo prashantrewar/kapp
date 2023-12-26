@@ -90,11 +90,7 @@ jobs:
             ${checksums['kapp-linux-amd64']}  ./kapp-linux-amd64
             ${checksums['kapp-linux-arm64']}  ./kapp-linux-arm64
             ${checksums['kapp-windows-amd64.exe']}  ./kapp-windows-amd64.exe`
-
-      - name: Sign checksums.txt
-        run: |
-          cosign sign-blob --yes ./tmp/checksums.txt --output-certificate release/checksums.txt.pem  --output-signature release/checksums.txt.sig
-    
+              
       - name: Verify checksums signature
         run: |
           cosign verify-blob \
